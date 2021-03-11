@@ -13,7 +13,7 @@ Initialize script with your `KEY` and options. For more information about option
 ```typescript
 import smartsupp from 'smartsupp-widget'
 smartsupp.init('YOUR_KEY', {
-	hideWidget: true,
+    hideWidget: true,
 })
 ```
 
