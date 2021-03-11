@@ -26,12 +26,13 @@ export interface WidgetOptions {
 	gaName?: string
 	gaKey?: string
 	gaOptions?: any
+	_loaderUrl?: string
 }
 
 const win = window as SmartsuppWindow
 
 export class SmartsuppSdk {
-	init(key: string, options?: WidgetOptions): void {
+	init(key: string, options: WidgetOptions = {}): void {
 		if (win.smartsupp) {
 			throw new Error('Smartsupp client is already initialized.')
 		}
@@ -49,7 +50,7 @@ export class SmartsuppSdk {
 			script.async = true
 			script.type = 'text/javascript'
 			script.charset = 'utf-8'
-			script.src = 'https://www.smartsuppchat.com/loader.js'
+			script.src = options._loaderUrl || 'https://www.smartsuppchat.com/loader.js'
 			document.body.appendChild(script)
 		})
 	}
