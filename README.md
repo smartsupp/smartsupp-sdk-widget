@@ -8,7 +8,7 @@ npm install smartsupp-widget --save
 
 ## Usage
 
-Initialize script with your `KEY` and options. For more information about options you can visit [Docs](https://docs.smartsupp.com/chat-box/configuration/)
+Initialize script with your `KEY` and options. For more information about options visit [Docs](https://docs.smartsupp.com/chat-box/configuration/)
 
 ```typescript
 import smartsupp from 'smartsupp-widget'
