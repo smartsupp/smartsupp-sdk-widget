@@ -6,8 +6,9 @@
   "homepage": "https://github.com/smartsupp/smartsupp-sdk-widget#readme",
   "author": "Smartsupp",
   "license": "MIT",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -16,12 +17,20 @@
   },
   "devDependencies": {
     "@types/node": "^14.14.33",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^2.41.1",
+    "rollup-plugin-sizes": "^1.0.4",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
     "typescript": "^4.2.3"
   },
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch",
-    "clean": "rm -rf lib",
+    "build": "run-s build:es5 build:esm build:bundle",
+    "build:es5": "tsc -p tsconfig.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:bundle": "rollup --config",
+    "watch": "tsc --watch",
+    "clean": "rm -rf lib esm",
     "prepublishOnly": "npm run build"
   }
 }

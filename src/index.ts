@@ -31,73 +31,71 @@ export interface WidgetOptions {
 
 const win = window as SmartsuppWindow
 
-export class SmartsuppSdk {
-	init(key: string, options: WidgetOptions = {}): void {
-		if (win.smartsupp) {
-			throw new Error('Smartsupp client is already initialized.')
-		}
-
-		win._smartsupp = {
-			...(win._smartsupp || {}),
-			...(options || {}),
-			key,
-		}
-		win.smartsupp = function() { win.smartsupp._.push(arguments) }
-		win.smartsupp._ = []
-
-		domReady(() => {
-			const script = window.document.createElement('script')
-			script.async = true
-			script.type = 'text/javascript'
-			script.charset = 'utf-8'
-			script.src = options._loaderUrl || 'https://www.smartsuppchat.com/loader.js'
-			document.body.appendChild(script)
-		})
+export function init(key: string, options: WidgetOptions = {}): void {
+	if (win.smartsupp) {
+		throw new Error('Smartsupp client is already initialized.')
 	}
 
-	setLanguage(lang: string) {
-		callApiMethod('language', lang)
+	win._smartsupp = {
+		...(win._smartsupp || {}),
+		...(options || {}),
+		key,
 	}
+	win.smartsupp = function() { win.smartsupp._.push(arguments) }
+	win.smartsupp._ = []
 
-	setName(name: string): void {
-		callApiMethod('name', name)
-	}
+	domReady(() => {
+		const script = window.document.createElement('script')
+		script.async = true
+		script.type = 'text/javascript'
+		script.charset = 'utf-8'
+		script.src = options._loaderUrl || 'https://www.smartsuppchat.com/loader.js'
+		document.body.appendChild(script)
+	})
+}
 
-	setEmail(email: string): void {
-		callApiMethod('email', email)
-	}
+export function setLanguage(lang: string) {
+	callApiMethod('language', lang)
+}
 
-	setGroup(group: string): void {
-		callApiMethod('group', group)
-	}
+export function setName(name: string): void {
+	callApiMethod('name', name)
+}
 
-	setPhone(phone: string): void {
-		callApiMethod('phone', phone)
-	}
+export function setEmail(email: string): void {
+	callApiMethod('email', email)
+}
 
-	setVariables(variables: Record<string, string | boolean | number>): void {
-		callApiMethod('variables', variables)
-	}
+export function setGroup(group: string): void {
+	callApiMethod('group', group)
+}
 
-	chatShow(): void {
-		callApiMethod('chat:show')
-	}
+export function setPhone(phone: string): void {
+	callApiMethod('phone', phone)
+}
 
-	chatHide(): void {
-		callApiMethod('chat:hide')
-	}
+export function setVariables(variables: Record<string, string | boolean | number>): void {
+	callApiMethod('variables', variables)
+}
 
-	chatOpen(): void {
-		callApiMethod('chat:open')
-	}
+export function chatShow(): void {
+	callApiMethod('chat:show')
+}
 
-	chatClose(): void {
-		callApiMethod('chat:close')
-	}
+export function chatHide(): void {
+	callApiMethod('chat:hide')
+}
 
-	chatMessage(text: string): void {
-		callApiMethod('chat:message', text)
-	}
+export function chatOpen(): void {
+	callApiMethod('chat:open')
+}
+
+export function chatClose(): void {
+	callApiMethod('chat:close')
+}
+
+export function chatMessage(text: string): void {
+	callApiMethod('chat:message', text)
 }
 
 function callApiMethod(name: string, ...args: any[]): void {
@@ -106,6 +104,3 @@ function callApiMethod(name: string, ...args: any[]): void {
 	}
 	win.smartsupp(name, ...args)
 }
-
-const sdk = new SmartsuppSdk()
-export default sdk
