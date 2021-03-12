@@ -7,13 +7,13 @@
     "declaration": true,
     "removeComments": true,
     "noImplicitReturns": true,
-	"noImplicitAny": true,
+    "noImplicitAny": true,
     "noUnusedLocals": true,
     "sourceMap": true,
-	"esModuleInterop": true,
-    "outDir": "lib",
+    "esModuleInterop": true,
+    "outDir": "lib"
   },
   "include": [
-    "src/*.ts",
+    "src/*.ts"
   ]
 }
