@@ -11,7 +11,7 @@ npm install smartsupp-widget --save
 Initialize script with your `KEY` and options. For more information about options visit [Docs](https://docs.smartsupp.com/chat-box/configuration/)
 
 ```typescript
-import smartsupp from 'smartsupp-widget'
+import * as smartsupp from 'smartsupp-widget'
 smartsupp.init('YOUR_KEY', {
     hideWidget: true,
 })
