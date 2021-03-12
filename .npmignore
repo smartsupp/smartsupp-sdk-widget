@@ -3,3 +3,5 @@ src
 .editorconfig
 tsconfig.json
 .idea
+tsconfig.esm.json
+rollup.config.js

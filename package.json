@@ -1,6 +1,6 @@
 {
   "name": "smartsupp-widget",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Smartsupp Widget SDK",
   "repository": "git://github.com/smartsupp/smartsupp-sdk-widget.git",
   "homepage": "https://github.com/smartsupp/smartsupp-sdk-widget#readme",
