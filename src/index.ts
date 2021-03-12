@@ -1,13 +1,13 @@
-const domReady = require('domready')
+import domReady from 'domready'
 
 type SmartsuppWindow = Window & {
 	SMARTSUPP_LOADED?: boolean
 	SMARTSUPP_AUTOCREATE?: boolean
 	smartsupp?: any
-	_smartsupp?: WidgetOptions & { key: string }
+	_smartsupp?: SmartsuppWidgetOptions & { key: string }
 }
 
-export interface WidgetOptions {
+export interface SmartsuppWidgetOptions {
 	zIndex?: number
 	cookiePath?: string
 	cookieDomain?: string
@@ -31,7 +31,7 @@ export interface WidgetOptions {
 
 const win = window as SmartsuppWindow
 
-export function init(key: string, options: WidgetOptions = {}): void {
+export function init(key: string, options: SmartsuppWidgetOptions = {}): void {
 	if (win.smartsupp) {
 		throw new Error('Smartsupp client is already initialized.')
 	}
@@ -98,7 +98,7 @@ export function chatMessage(text: string): void {
 	callApiMethod('chat:message', text)
 }
 
-function callApiMethod(name: string, ...args: any[]): void {
+function callApiMethod(name: string, ...args: unknown[]): void {
 	if (!win.smartsupp) {
 		throw new Error('Smartsupp client was not initialized')
 	}
