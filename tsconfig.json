@@ -2,17 +2,18 @@
   "compilerOptions": {
     "strict": true,
     "target": "es5",
-    "module": "commonjs",
+    "module": "esnext",
     "allowJs": false,
     "declaration": true,
     "removeComments": true,
     "noImplicitReturns": true,
+    "noImplicitAny": true,
     "noUnusedLocals": true,
     "sourceMap": true,
-    "outDir": "lib",
-    "lib": ["dom", "es5"]
+    "esModuleInterop": true,
+    "outDir": "lib"
   },
   "include": [
-    "src/*.ts",
+    "src/*.ts"
   ]
 }
